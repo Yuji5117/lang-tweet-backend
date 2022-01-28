@@ -1,9 +1,7 @@
 import express from "express";
 import client from "./api/twitter";
-const router = express.Router();
 
 const app: express.Express = express();
-require("dotenv").config();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -18,9 +16,10 @@ app.use(
 );
 
 app.post("/tweet", async (req, res) => {
-  console.log(req.body.test);
+  const { tweetKr, tweetJp } = req.body;
+  const tweetTemplate = `＜簡単表現＞\n\n【韓国語】\n・${tweetKr}\n\n【日本語】\n・${tweetJp}\n\n#韓国語 #ハングル #korean #勉強`;
 
-  await client.post("statuses/update", { status: req.body.test });
+  await client.post("statuses/update", { status: tweetTemplate });
 
   res.status(200).json({
     data: {
