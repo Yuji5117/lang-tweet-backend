@@ -8,6 +8,9 @@
     "express": "^4.17.2",
     "twitter": "^1.7.1"
   },
+  "scripts": {
+    "start": "npx ts-node src/index.ts"
+  },
   "devDependencies": {
     "@types/express": "^4.17.13",
     "@types/node": "^17.0.12",
