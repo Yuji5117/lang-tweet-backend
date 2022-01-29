@@ -1,6 +1,8 @@
 import express from "express";
 import client from "./api/twitter";
 
+require("dotenv").config();
+
 const app: express.Express = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
