@@ -1,4 +1,5 @@
 import Twitter from "twitter";
+require("dotenv").config();
 
 // TODO: node_mudulesを直接undefinedを許容するように一時的に修正。後ほど、修正必要あり
 const client: Twitter = new Twitter({
