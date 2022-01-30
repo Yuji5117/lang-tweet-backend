@@ -1,8 +1,6 @@
 import express from "express";
 import client from "./api/twitter";
 
-require("dotenv").config();
-
 const app: express.Express = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -31,6 +29,33 @@ app.post("/tweet", async (req, res) => {
         "Access-Control-Allow-Credentials": true,
       },
       body: "ツイートされました！！",
+    },
+  });
+});
+
+app.post("/likes", async (req, res) => {
+  await client.get(
+    "statuses/user_timeline",
+    req.body.test,
+    function (error, tweets, response) {
+      console.log(tweets);
+      if (!error) {
+        client.post("favorites/create", { id: tweets[10].id_str });
+        console.log("ライクです", error);
+      } else {
+        console.log("エラーです", error);
+      }
+    }
+  );
+
+  res.status(200).json({
+    data: {
+      statusCode: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true,
+      },
+      body: "ライクしました！！",
     },
   });
 });
