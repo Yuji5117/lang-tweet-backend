@@ -5,9 +5,11 @@
   "repository": "https://github.com/Yuji5117/lang-tweet-backend",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.25.0",
     "dotenv": "^14.3.2",
     "express": "^4.17.2",
-    "twitter": "^1.7.1"
+    "twitter": "^1.7.1",
+    "twitter-api-v2": "^1.10.0"
   },
   "scripts": {
     "start": "npx ts-node src/index.ts"
